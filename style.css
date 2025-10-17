@@ -1,0 +1,68 @@
+  :root{
+    --fondo: #fffbe6;
+    --texto: #333;
+    --petalo: #ffd34d;
+    --centro: #ff9f1c;
+    --tallo: #4caf50;
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    background: linear-gradient(180deg, var(--fondo), #fff);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--texto);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+
+  .contenedor{
+    text-align:center;
+    padding:30px;
+  }
+
+  h1{
+    margin:0 0 24px 0;
+    font-size: clamp(24px, 4vw, 38px);
+    min-height: 40px;
+  }
+
+  .flor-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+
+    transform-origin: center bottom;
+    transform: scale(0);
+    animation: crecer 2s forwards; 
+  }
+
+  .flor-svg{
+    width: 500px;
+    height: 600px;
+    animation: pulse 2400ms ease-in-out infinite;
+  }
+
+  @keyframes crecer{
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+
+  @keyframes pulse{
+    0% { transform: scale(1); filter: drop-shadow(0 8px 12px rgba(255, 0, 0, 0.12)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 14px 22px rgba(0,0,0,0.18)); }
+    100% { transform: scale(1); filter: drop-shadow(0 8px 12px rgba(0,0,0,0.12)); }
+  }
+
+  .sub{
+    margin-top:16px;
+    color:#666;
+    font-size:14px;
+  }
+
+  @media (max-width:480px){
+    .flor-svg{ width: 350px; height: 450px; }
+  }
