@@ -1,67 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<title>Flor Grande 🌼</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Proyecto</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images.png" />
+
 </head>
 <body>
-  <div class="contenedor">
-    <h1 id="mensaje"></h1>
 
-    <div class="flor-wrap" id="flor">
-      <svg class="flor-svg" viewBox="-200 -250 400 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-          <ellipse id="petalo" cx="80" cy="0" rx="70" ry="28" />
-        </defs>
-
-        <g id="petalos">
-          <use xlink:href="#petalo" fill="var(--petalo)" transform="rotate(0) translate(-80,0)"/>
-          <use xlink:href="#petalo" fill="var(--petalo)" transform="rotate(45) translate(-80,0)"/>
-          <use xlink:href="#petalo" fill="var(--petalo)" transform="rotate(90) translate(-80,0)"/>
-          <use xlink:href="#petalo" fill="var(--petalo)" transform="rotate(135) translate(-80,0)"/>
-          <use xlink:href="#petalo" fill="var(--petalo)" transform="rotate(180) translate(-80,0)"/>
-          <use xlink:href="#petalo" fill="var(--petalo)" transform="rotate(225) translate(-80,0)"/>
-          <use xlink:href="#petalo" fill="var(--petalo)" transform="rotate(270) translate(-80,0)"/>
-          <use xlink:href="#petalo" fill="var(--petalo)" transform="rotate(315) translate(-80,0)"/>
-        </g>
-
-        <circle cx="0" cy="0" r="50" fill="var(--centro)" />
-        <circle cx="-10" cy="-8" r="10" fill="rgba(0,0,0,0.06)"/>
-        <circle cx="10" cy="10" r="6" fill="rgba(255,255,255,0.15)"/>
-
-        <rect x="-10" y="50" width="20" height="260" fill="var(--tallo)" rx="10"/>
-        <ellipse cx="-50" cy="140" rx="45" ry="20" fill="#4caf50" transform="rotate(-25)"/>
-        <ellipse cx="50" cy="190" rx="45" ry="20" fill="#66bb6a" transform="rotate(25)"/>
-      </svg>
-    </div>
-
-    <div class="sub">Haz clic en la flor para cambiar su color 🌼</div>
+  <div id="login">
+    <h2>🔐 Ingresa la contraseña</h2>
+    <input type="password" id="password" placeholder="Contraseña">
+    <br>        <link rel="stylesheet" href="flores.html" />
+    <button onclick="checkPassword()">Entrar</button>
   </div>
 
   <script>
-    // efecto de tipeo
-    const mensaje = "Eres tan hermosa como una flor 🌼";
-    const elemento = document.getElementById("mensaje");
-    let i = 0;
-    function escribirTexto() {
-      if (i < mensaje.length) {
-        elemento.textContent += mensaje.charAt(i);
-        i++;
-        setTimeout(escribirTexto, 70);
+    const correctPassword = "Yaneidi";
+
+    function checkPassword() {
+      const pass = document.getElementById('password').value;
+      if (pass === correctPassword) {
+        document.getElementById('login').style.display = 'none';
+        enviarotraclase();
+      } else {
+        alert("Contraseña incorrecta 🔐,  La Contraseña es tu Nombre Y la Primera Letra es Mayuscula");
+      }
+
+      function enviarotraclase(){
+        window.location.href = "flores.html";
       }
     }
-    escribirTexto();
-
-    // cambiar color de pétalos al hacer clic
-    const flor = document.getElementById("flor");
-    const petalos = document.querySelectorAll("#petalos use");
-
-    flor.addEventListener("click", () => {
-      const colores = ["#FFD34D", "#FFEA00", "#FFF176", "#FDD835", "#FFEB3B", "#FFE082"];
-      const nuevoColor = colores[Math.floor(Math.random() * colores.length)];
-      petalos.forEach(p => p.setAttribute("fill", nuevoColor));
-    });
   </script>
+
 </body>
 </html>

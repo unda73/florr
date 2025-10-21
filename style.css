@@ -1,68 +1,64 @@
-  :root{
-    --fondo: #fffbe6;
-    --texto: #333;
-    --petalo: #ffd34d;
-    --centro: #ff9f1c;
-    --tallo: #4caf50;
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #fffbea;
+      font-family: sans-serif;
+      height: 100vh;
+      color: #444;
+    }
 
-  html,body{
-    height:100%;
-    margin:0;
-    background: linear-gradient(180deg, var(--fondo), #fff);
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    color: var(--texto);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-  }
+    #login, #content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fffaf0;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      z-index: 10;
+    }
 
-  .contenedor{
-    text-align:center;
-    padding:30px;
-  }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #fdd835;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
 
-  h1{
-    margin:0 0 24px 0;
-    font-size: clamp(24px, 4vw, 38px);
-    min-height: 40px;
-  }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #fdd835;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      color: #333;
+    }
 
-  .flor-wrap{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
+    h1 {
+      color: #f4b400;
+    }
 
-    transform-origin: center bottom;
-    transform: scale(0);
-    animation: crecer 2s forwards; 
-  }
+    #content {
+      display: none;
+      z-index: 10;
+    }
 
-  .flor-svg{
-    width: 500px;
-    height: 600px;
-    animation: pulse 2400ms ease-in-out infinite;
-  }
+    .flower {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0;
+      transform: scale(0);
+      transition: transform 1s ease-out, opacity 1s ease-out;
+    }
 
-  @keyframes crecer{
-    from { transform: scale(0); }
-    to { transform: scale(1); }
-  }
-
-  @keyframes pulse{
-    0% { transform: scale(1); filter: drop-shadow(0 8px 12px rgba(255, 0, 0, 0.12)); }
-    50% { transform: scale(1.05); filter: drop-shadow(0 14px 22px rgba(0,0,0,0.18)); }
-    100% { transform: scale(1); filter: drop-shadow(0 8px 12px rgba(0,0,0,0.12)); }
-  }
-
-  .sub{
-    margin-top:16px;
-    color:#666;
-    font-size:14px;
-  }
-
-  @media (max-width:480px){
-    .flor-svg{ width: 350px; height: 450px; }
-  }
+    .flower.show {
+      opacity: 1;
+      transform: scale(1);
+    }
