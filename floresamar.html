@@ -72,5 +72,17 @@
       petalos.forEach(p => p.setAttribute("fill", nuevoColor));
     });
   </script>
+  <audio id="miAudio" autoplay loop muted style="display:none;">
+  <source src="audio/Prince Royce - Darte un Beso (Official Video) - PrinceRoyceVEVO.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  document.addEventListener("click", function() {
+    var audio = document.getElementById("miAudio");
+    audio.muted = false;
+    audio.play();
+    audio.volume = 0.2; 
+  });
+</script>
 </body>
 </html>
