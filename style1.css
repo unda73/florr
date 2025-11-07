@@ -16,6 +16,7 @@
     align-items:center;
     justify-content:center;
     overflow:hidden;
+    position: relative;
   }
 
   .contenedor{
@@ -75,6 +76,7 @@
   animation: mover 45s linear infinite;
   filter: blur(1px);
   z-index: 0;
+  will-change: transform;
 }
 
 .nube::before, .nube::after {
@@ -96,7 +98,7 @@
 }
 
 @keyframes mover {
-  0% { left: -200px; }
+  0% { left: -150px; }
   100% { left: 110%; }
 }
 
@@ -161,6 +163,7 @@
     flex-direction: column;
     justify-content: flex-start;
     background: linear-gradient(180deg, var(--fondo) 0%, #fff 85%);
+    height: 100vh;
     overflow: hidden;
   }
 
@@ -190,10 +193,12 @@
     margin-top: 8px;
   }
 
-  /* 🌥️ Ajustes para las nubes */
+
   .nube {
     transform: scale(0.6);
     opacity: 0.8;
+    top: auto;
+    bottom: 70%;
   }
 
   .nube:nth-child(1) { top: 20px; animation-duration: 40s; }
