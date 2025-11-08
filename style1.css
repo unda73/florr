@@ -106,15 +106,48 @@ h1 {
 .nube:nth-child(6) { top: 150px; animation-duration: 95s; animation-delay: 40s; }
 .nube:nth-child(7) { top: 100px; animation-duration: 105s; animation-delay: 48s; }
 
+.sol {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at center, #fff176 0%, #fbc02d 40%, #f57f17 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 40px 10px rgba(255, 235, 59, 0.6);
+  animation: brillar 6s ease-in-out infinite, moverSol 20s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes brillar {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 40px 10px rgba(255, 235, 59, 0.6);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 60px 20px rgba(255, 235, 59, 0.8);
+  }
+}
+
+@keyframes moverSol {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
 
 @media (max-width:480px) {
-   html, body {
+  html, body {
     flex-direction: column;
     justify-content: flex-start;
     background: linear-gradient(180deg, var(--fondo) 0%, #fff 85%);
     height: 100dvh;
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .contenedor {
@@ -147,17 +180,44 @@ h1 {
     margin-top: 8px;
   }
 
-
   .nube {
-    position: fixed; 
+    position: fixed;
+    top: 10%; 
+    left: 0;
     transform: scale(0.6);
-    animation: moverNube 50s ease-in-out infinite;
+    animation: moverNube 25s linear infinite;
     pointer-events: none;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform-origin: center center;
   }
 
   @keyframes moverNube {
-    0% { transform: translateX(0) scale(0.6); }
-    50% { transform: translateX(100vw) scale(0.6); }
-    100% { transform: translateX(0) scale(0.6); }
+    0% {
+      transform: translateX(0) scale(0.6);
+      opacity: 1;
+    }
+    80% {
+      transform: translateX(-80vw) scale(0.6);
+      opacity: 1;
+    }
+    90% {
+      opacity: 0; 
+    }
+    91% {
+      transform: translateX(80vw) scale(0.6);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) scale(0.6);
+      opacity: 1;
+    }
   }
+
+  .sol {
+  width: 80px;
+  height: 80px;
+  right: 30px;
+  top: 30px;
+}
 }
